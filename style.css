@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(200px, 3);
+    background-color: #555;
+    max-width: 600px;
+}
+
+.box {
+    aspect-ratio: 1;
+    height: 200px;
+    border: 2px solid white;
+    font-size: 3rem;
+    color: yellow;
+}
