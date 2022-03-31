@@ -1,6 +1,7 @@
 isX = true;
 
 boxes = Array.from(document.querySelectorAll('.box'))
+info = document.querySelector(".info");
 
 winCondition = [
     [0, 1, 2],
@@ -12,9 +13,6 @@ winCondition = [
     [0, 4, 8],
     [2, 4, 6]
 ]
-
-test = [0, 1, 2];
-console.log(test)
 
 xMoves = [];
 oMoves = [];
@@ -35,12 +33,14 @@ function move() {
     }
     xSorted = xMoves.sort();
     oSorted = oMoves.sort();
+    //sortowawnie tablic
 
     for (i = 0; i < winCondition.length; i++) {
         if(JSON.stringify(xSorted) === JSON.stringify(winCondition[i])){
-            window.alert("x wygraly");
+            info.innerHTML = "X wygrały";
+            
         } else if (JSON.stringify(oSorted) === JSON.stringify(winCondition[i])){
-            window.alert("o wygraly");
+            info.innerHTML = "O wygrały";
         }
     }
     

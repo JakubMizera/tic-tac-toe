@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .game {
@@ -25,4 +26,9 @@
     border: 2px solid white;
     font-size: 3rem;
     color: yellow;
+}
+
+.info {
+    color: white;
+    font-size: 3rem;
 }
