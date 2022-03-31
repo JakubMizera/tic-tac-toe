@@ -34,10 +34,16 @@ function move() {
         //pushowanie ID do tablic w zależnosci od ruchu
     }
     xSorted = xMoves.sort();
-    console.log(xSorted)
-    for (let i = 0; i < xSorted.length; i++) {
-        console.log(xSorted[i] == test[i])
+    oSorted = oMoves.sort();
+
+    for (i = 0; i < winCondition.length; i++) {
+        if(JSON.stringify(xSorted) === JSON.stringify(winCondition[i])){
+            window.alert("x wygraly");
+        } else if (JSON.stringify(oSorted) === JSON.stringify(winCondition[i])){
+            window.alert("o wygraly");
+        }
     }
+    
 }
 
 console.log(xMoves)
