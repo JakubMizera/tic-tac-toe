@@ -1,7 +1,6 @@
 isX = true;
 
 boxes = Array.from(document.querySelectorAll('.box'))
-console.log(boxes)
 
 winCondition = [
     [0, 1, 2],
@@ -14,7 +13,8 @@ winCondition = [
     [2, 4, 6]
 ]
 
-
+test = [0, 1, 2];
+console.log(test)
 
 xMoves = [];
 oMoves = [];
@@ -27,17 +27,17 @@ function move() {
         isX = !isX;
         //zmiana ruchu
         if (isX == false) {
-            xMoves.push(this.id);
+            xMoves.push(parseInt(this.id));
         } else {
-            oMoves.push(this.id);
+            oMoves.push(parseInt(this.id));
         }
         //pushowanie ID do tablic w zależnosci od ruchu
     }
-
-}
-
-function checkWin() {
-    
+    xSorted = xMoves.sort();
+    console.log(xSorted)
+    for (let i = 0; i < xSorted.length; i++) {
+        console.log(xSorted[i] == test[i])
+    }
 }
 
 console.log(xMoves)
