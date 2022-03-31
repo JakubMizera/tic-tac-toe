@@ -24,11 +24,23 @@
     aspect-ratio: 1;
     height: 200px;
     border: 2px solid white;
-    font-size: 3rem;
+    font-size: 10rem;
     color: yellow;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .info {
     color: white;
     font-size: 3rem;
 }
+
+.btn {
+    width: 200px;
+    height: 50px;
+    background-color: #555;
+    color: white;
+    font-size: 2rem;
+}
+

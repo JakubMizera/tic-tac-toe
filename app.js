@@ -2,12 +2,13 @@ isX = true;
 
 boxes = Array.from(document.querySelectorAll('.box'))
 info = document.querySelector(".info");
+resetBtn = document.querySelector(".btn");
 
 winCondition = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
-    [0, 3 ,6],
+    [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
@@ -20,7 +21,7 @@ oMoves = [];
 
 function move() {
     if (this.innerHTML == '') {
-        this.innerHTML = isX ? 'x' : 'o';
+        this.innerHTML = isX ? 'X' : 'O';
         //nadaje X albo O w zaleznosci od zmiennej isX
         isX = !isX;
         //zmiana ruchu
@@ -31,22 +32,26 @@ function move() {
         }
         //pushowanie ID do tablic w zależnosci od ruchu
     }
-    xSorted = xMoves.sort();
-    oSorted = oMoves.sort();
-    //sortowawnie tablic
 
     for (i = 0; i < winCondition.length; i++) {
-        if(JSON.stringify(xSorted) === JSON.stringify(winCondition[i])){
+        if (JSON.stringify(xMoves.sort()) === (JSON.stringify(winCondition[i]))) {
             info.innerHTML = "X wygrały";
-            
-        } else if (JSON.stringify(oSorted) === JSON.stringify(winCondition[i])){
+            reset();
+            //dziala dopoki sa 3 "X" jesli jest wiecej to nie
+
+        } else if (JSON.stringify(oMoves.sort()) === JSON.stringify(winCondition[i])) {
             info.innerHTML = "O wygrały";
+            reset();
         }
     }
-    
+
 }
 
-console.log(xMoves)
-console.log(oMoves)
+function reset() {
+    boxes.forEach(box => box.innerHTML = "")
+    xMoves = [];
+    oMoves = [];
+}
 
 boxes.forEach(box => box.addEventListener('click', move));
+resetBtn.addEventListener('click', reset);
