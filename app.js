@@ -33,25 +33,42 @@ function move() {
         //pushowanie ID do tablic w zależnosci od ruchu
     }
 
-    for (i = 0; i < winCondition.length; i++) {
-        if (JSON.stringify(xMoves.sort()) === (JSON.stringify(winCondition[i]))) {
+    // for (i = 0; i < winCondition.length; i++) {
+    //     if (JSON.stringify(xMoves.sort()) === (JSON.stringify(winCondition[i]))) {
+    //         info.innerHTML = "X wygrały";
+    //         reset();
+    //         //dziala dopoki sa 3 "X" jesli jest wiecej to nie
+
+    //     } else if (JSON.stringify(oMoves.sort()) === JSON.stringify(winCondition[i])) {
+    //         info.innerHTML = "O wygrały";
+    //         reset();
+    //     }
+    // }
+
+    winCondition.forEach(condition => {
+        if (xMoves.includes(condition[0]) && xMoves.includes(condition[1]) && xMoves.includes(condition[2])) {
             info.innerHTML = "X wygrały";
-            reset();
-            //dziala dopoki sa 3 "X" jesli jest wiecej to nie
-
-        } else if (JSON.stringify(oMoves.sort()) === JSON.stringify(winCondition[i])) {
+            boxes.forEach(box => box.removeEventListener('click', move));
+            
+        } else if (oMoves.includes(condition[0]) && oMoves.includes(condition[1]) && oMoves.includes(condition[2])) {
             info.innerHTML = "O wygrały";
-            reset();
+            boxes.forEach(box => box.removeEventListener('click', move));
+            
+        } else if (xMoves.length + oMoves.length == 9 && info.innerHTML == "") {
+            info.innerHTML = "Remis"
+            boxes.forEach(box => box.removeEventListener('click', move));
         }
-    }
-
+    })
 }
 
 function reset() {
     boxes.forEach(box => box.innerHTML = "")
     xMoves = [];
     oMoves = [];
+    info.innerHTML = "";
+    boxes.forEach(box => box.addEventListener('click', move));
 }
+
 
 boxes.forEach(box => box.addEventListener('click', move));
 resetBtn.addEventListener('click', reset);
